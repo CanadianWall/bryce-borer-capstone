@@ -1,0 +1,11 @@
+@import "../../styles/partials/_mixins.scss";
+@import "../../styles/partials/_variables.scss";
+
+.food {
+    max-width: 500px;
+
+    &--img {
+        object-fit: cover;
+        max-width: 500px;
+    }
+}

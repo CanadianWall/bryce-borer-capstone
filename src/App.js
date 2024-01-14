@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import './App.scss';
+import "./styles/partials/_global.scss";
+import Home from "./pages/Home/Home"
+
+// API bryce-borer-capstone
+// key ID: WGUmFqSK
+// secret key: WGUmFqSK.gcxjKP1cm9F4MaLTZUlntSeuQWpHWreI
+
+const FOOD_URL = "https://vision.foodvisor.io/api/1.0/en/analysis/"
+const headers = {"Authorization": "Api-Key <YOUR_API_KEY>"}
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
