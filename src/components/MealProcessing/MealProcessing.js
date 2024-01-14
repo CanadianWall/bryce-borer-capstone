@@ -4,7 +4,7 @@ import { API_BASE_URL } from "../../utils/utils";
 import React, { useState, useEffect } from "react";
 
 import sandwich from '../../assets/images/ham-sandwich.jpeg'
-import pizza from '../../assets/images/pizza.jpeg'
+import pizza from '../../assets/images/pizza.jpg'
 
 // const fetch = require('node-fetch');
 //const fs = require('fs');
@@ -15,12 +15,13 @@ const headers = {
     "Content-Type": "multipart/form-data; boundary=<calculated when request is sent></calculated>",
     "Authorization": `Api-Key ${API_KEY}`
 };
-const pizzaDir = "/C:/Users/bryce/Brainstation/bryce-borer-capstone/src/assets/images/pizza.jpeg"
+const foodDir = "/C:/Users/bryce/Brainstation/bryce-borer-capstone/src/assets/images/ham-sandwich.jpeg"
 
 const MealProcessing = () => {
     const [foodData, setFoodData] = useState("Loading...")
+    const [image, setImage] = useState('')
     const formData = new FormData();
-    formData.append("image", pizzaDir)
+    formData.append("image", foodDir)
 
     const foodProcessing = () => {
 
@@ -37,18 +38,32 @@ const MealProcessing = () => {
 
     }
 
+
+    function handleImage(e){
+        console.log(e.target.files)
+        setImage (e.target.files[0])
+    }
+
+        
+
+
+
     return (
         <main>
             <section className="food">
+                <div className="food--wrapper">
                 <img
                     src={pizza}
                     alt="pizza"
                     className="food--img" />
-                <form method="post" encType="multipart/form-data" action="http://localhost:8080/foodImage">
+                </div>
+                {/* <form method="post" encType="multipart/form-data" action="http://localhost:8080/foodImage">
 
                     <input type="file" id="foodImage" name="foodImage" accept="image/jpeg, image/png, image/jpg"></input>
                     <button>SUBMIT</button>
-                </form>
+                </form> */}
+        <input type="file" name="file" onChange={handleImage}/>
+
             </section>
             <section>
                 <h1 className="data">
