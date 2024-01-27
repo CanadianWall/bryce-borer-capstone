@@ -1,36 +1,29 @@
-// const [image, setImage] = useState(null);
-// const fileInputRef = useRef(null);
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-// const handleDrop = (e) => {
-//   e.preventDefault();
+const baseUrl = "http://localhost:8080";
+const accountUrl = `${baseUrl}/profile`;
 
-//   const file = e.dataTransfer.files[0];
+function Account() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState({});
 
-//   if (file && file.type.startsWith('image/')) {
-//     const reader = new FileReader();
+  useEffect(() => {
+    // Here grab the token from sessionStorage and then make an axios request to profileUrl endpoint.
+    // Remember to include the token in Authorization header
+    const token = sessionStorage.getItem('authToken')
 
-//     reader.onload = () => {
-//       setImage(reader.result);
-//     };
+    axios.get(accountUrl, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((response) => {
+      setIsLoading(false)
+      setUserInfo(response.data)
+    });
+  }, []);
 
-//     reader.readAsDataURL(file);
-//   }
-// };
+  return isLoading ? <h1>Loading...</h1> : <h1>Welcome {userInfo.name}!</h1>;
+}
 
-// const handleDragOver = (e) => {
-//   e.preventDefault();
-// };
-
-// const handleFileInputChange = (e) => {
-//   const file = e.target.files[0];
-
-//   if (file && file.type.startsWith('image/')) {
-//     const reader = new FileReader();
-
-//     reader.onload = () => {
-//       setImage(reader.result);
-//     };
-
-//     reader.readAsDataURL(file);
-//   }
-// };
+export default Account;

@@ -2,21 +2,23 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.scss';
 import "./styles/partials/_global.scss";
 import Home from "./pages/Home/Home"
-
-// API bryce-borer-capstone
-// key ID: WGUmFqSK
-// secret key: WGUmFqSK.gcxjKP1cm9F4MaLTZUlntSeuQWpHWreI
-
-const FOOD_URL = "https://vision.foodvisor.io/api/1.0/en/analysis/"
-const headers = {"Authorization": "Api-Key <YOUR_API_KEY>"}
-
+import SignUpForm from "./pages/SignUpForm/SignUpForm";
+import Header from "./components/Header/Header";
+import Account from "./pages/Account/Account";
+import LogIn from "./pages/LogIn/LogIn";
+import Trends from "./pages/Trends/Trends";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/trends" element={<Trends />} />
         </Routes>
       </BrowserRouter>
     </div>
