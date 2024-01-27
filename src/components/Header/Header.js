@@ -9,43 +9,43 @@ const Header = (props) => {
 
     const [userInfo, setUserInfo] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-  
+
     const baseUrl = "http://localhost:8080";
-  const accountUrl = `${baseUrl}/account`;
-  
+    const accountUrl = `${baseUrl}/account`;
+
     const token = sessionStorage.getItem('authToken')
-  
+
     useEffect(() => {
-      // Here grab the token from sessionStorage and then make an axios request to profileUrl endpoint.
-      // Remember to include the token in Authorization header
-      const token = sessionStorage.getItem('authToken')
-  
-      axios.get(accountUrl, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((response) => {
-        setIsLoading(false)
-        setUserInfo(response.data)
-      });
+        // Here grab the token from sessionStorage and then make an axios request to profileUrl endpoint.
+        // Remember to include the token in Authorization header
+        const token = sessionStorage.getItem('authToken')
+
+        axios.get(accountUrl, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }).then((response) => {
+            setIsLoading(false)
+            setUserInfo(response.data)
+        });
     }, []);
 
 
 
-    return(
-        <header>
-      <nav>
-        <div className="logo">
-          <a href="/">sAIcheese</a>
-        </div>
-        <ul className="nav-links">
-          <li><a href="/trends">Trends</a></li>
-          <li><a href="/login">{isLoggedIn ?(props.userName) : ("Log In")}</a></li>
-          <li><a href="/signup">Sign Up</a></li>
-          <li><a href="/account">Account</a></li>
-        </ul>
-      </nav>
-    </header>
+    return (
+        <header className="header">
+            <nav>
+                <div className="header--logo">
+                    <a href="/">sAIcheese</a>
+                </div>
+                <ul className="header__links">
+                    <li className="header__links--item"><a href="/trends">Trends</a></li>
+                    <li className="header__links--item"><a href="/login">{isLoggedIn ? (props.userName) : ("Log In")}</a></li>
+                    <li className="header__links--item"><a href="/signup">Sign Up</a></li>
+                    <li className="header__links--item"><a href="/account">Account</a></li>
+                </ul>
+            </nav>
+        </header>
     )
 }
 

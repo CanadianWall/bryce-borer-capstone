@@ -13,6 +13,16 @@ body {
 
 }
 
+// html,
+// body {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+//     font-family: $font-regular;
+//     color: $black;
+
+// }
+
 // html{
 //     overflow: hidden;
 //     @include tablet{
@@ -58,7 +68,8 @@ h2 {
 h3,
 label,
 link,
-button {
+button,
+a {
     font-size: 13px;
     line-height: 20px;
     font-family: $font-bold;
