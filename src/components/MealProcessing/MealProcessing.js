@@ -4,9 +4,9 @@ import React, { useState, useEffect, useRef } from "react";
 
 const FormData = require('form-data');
 
-const MealProcessing = () => {
+const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
   const formData = new FormData();
-
+  
   const [image, setImage] = useState(null);
   const fileInputRef = useRef(null);
 
@@ -24,7 +24,32 @@ const MealProcessing = () => {
         const fileName = file.name;
         axios.post('http://localhost:8080/foodImage', { fileName })
           .then((response) => {
-            console.log('File upload success:', response.data);
+            const size = response.data.items[0].food[0].food_info.g_per_serving
+            const calories = (response.data.items[0].food[0].food_info.nutrition.calories_100g * size/100)
+            const carbs = (response.data.items[0].food[0].food_info.nutrition.carbs_100g * size/100)
+            const protein = (response.data.items[0].food[0].food_info.nutrition.proteins_100g * size/100)
+            const fat = (response.data.items[0].food[0].food_info.nutrition.fat_100g * size/100)
+            const sugar = (response.data.items[0].food[0].food_info.nutrition.sugars_100g * size/100)
+
+            const newData = {
+              foodMacros:{
+                foodName: response.data.items[0].food[0].food_info.display_name,
+                size: size,
+                calories: calories,
+                carbs: carbs,
+                protein: protein,
+                fat: fat,
+                sugar:sugar
+            }}
+            console.log('Food identified as: ', response.data.items[0].food[0].food_info.display_name);
+            console.log('Serving size: ', response.data.items[0].food[0].food_info.g_per_serving, "g");
+            console.log('Calories: ', response.data.items[0].food[0].food_info.nutrition.calories_100g);
+            console.log('Carbs: ', response.data.items[0].food[0].food_info.nutrition.carbs_100g);
+            console.log('Protein: ', response.data.items[0].food[0].food_info.nutrition.proteins_100g);
+            console.log('Fat: ', response.data.items[0].food[0].food_info.nutrition.fat_100g);
+            console.log('Sugar: ', response.data.items[0].food[0].food_info.nutrition.sugars_100g);
+           // props.updateNutrition(response.data)
+           updateFoodMacros(newData);
           })
           .catch((err) => {
             console.error('File upload error:', err);
@@ -41,6 +66,8 @@ const MealProcessing = () => {
     e.preventDefault();
   };
 
+  
+
 
   return (
     <main>
@@ -48,27 +75,22 @@ const MealProcessing = () => {
         <div
           onDrop={handleDrop}
           onDragOver={handleDragOver}
-          style={{
-            border: '2px dashed #aaa',
-            borderRadius: '8px',
-            padding: '20px',
-            textAlign: 'center',
-            cursor: 'pointer',
-          }}
+          className="meal__box"
         >
           {image ? (
             <img
               src={image}
               alt="Uploaded"
-              style={{ maxWidth: '100%', maxHeight: '200px' }}
+              className="meal__box--image"
+
             />
           ) : (
-            <p>Drag & drop an image here, or click to select one.</p>
+            <p>Drag & drop your meal here</p>
           )}
         </div>
 
       </section>
-      
+
 
     </main>
   )

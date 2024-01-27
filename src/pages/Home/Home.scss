@@ -2,10 +2,144 @@
 @import "../../styles/partials/_variables.scss";
 
 .food {
-    max-width: 500px;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 $mobile-margin;
 
-    &--img {
-        object-fit: cover;
-        max-width: 500px;
+    &__name{
+        width:500px;
+        display: flex;
     }
+
+    &__facts{
+        width:500px;
+        display: flex;
+
+        &--info{
+            width:500px;
+            display: flex;
+            margin: 0;
+        }
+    }
+
+    
+    
 }
+
+.food--button {
+    position:relative;
+    display: flex;
+width:150px;
+justify-content: center;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.5s;
+    overflow: hidden;
+  
+    // Shine animation for hover
+  &:hover {
+    background-color: $orange; /* Change the background color on hover */
+    color: #fff; /* Change the text color on hover */
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  &:nth-child(2):hover{
+    background: #ff3c7f;
+  }
+
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    transition: 0.5s
+  }
+
+  &:hover::before{
+    left: 100%;
+  }
+    
+  }
+
+//   &::before {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: -100%;
+//     width: 100%;
+//     height: 100%;
+//     background: linear-gradient(
+//       90deg,
+//       transparent,
+//       rgba(255, 255, 255, 0.4),
+//       transparent
+//     );
+//     opacity: 0.5;
+//     transition: left 0.3s ease;
+//   }
+
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 100%;
+//     width: 100%;
+//     height: 100%;
+//     background: linear-gradient(
+//       270deg,
+//       transparent,
+//       rgba(255, 255, 255, 0.4),
+//       transparent
+//     );
+//     opacity: 0.5;
+//     transition: left 0.3s ease;
+//   }
+// }
+
+// &.primary {
+//   // ... (primary button styles)
+
+//   // Shine animation for primary button
+//   &:hover {
+//     // ... (primary button hover styles)
+
+//     &::before,
+//     &::after {
+//       background: linear-gradient(
+//         90deg,
+//         transparent,
+//         rgba(0, 123, 255, 0.4),
+//         transparent
+//       );
+//     }
+//   }
+// }
+
+// &.secondary {
+//   // ... (secondary button styles)
+
+//   // Shine animation for secondary button
+//   &:hover {
+//     // ... (secondary button hover styles)
+
+//     &::before,
+//     &::after {
+//       background: linear-gradient(
+//         90deg,
+//         transparent,
+//         rgba(108, 117, 125, 0.4),
+//         transparent
+//       );
+//     }
+//   }
+// }

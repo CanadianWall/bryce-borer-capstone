@@ -1,15 +1,13 @@
 @use "./fonts" as *;
 
 // Colors
-$instock-black: #13182c;
-$slate: #5c667e;
-$graphite: #232940;
-$green: #158463;
-$instock-indigo: #2e66e5;
-$cloud: #bdc5d5;
-$light-grey: #f7f8f9;
-$red: #c94515;
+$black: #13182c;
+$light-grey: #f2f2f2;
+$dark-grey: #676767;
 $white: #ffffff;
+$yellow: #fbc956;
+$dark-yellow: #aa8736;
+$orange: #ff6f61;
 
 // breakpoints and margins
 $mobile-margin: 16px;

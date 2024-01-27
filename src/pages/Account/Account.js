@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Header from "../../components/Header/Header";
 
 const baseUrl = "http://localhost:8080";
-const accountUrl = `${baseUrl}/profile`;
+const accountUrl = `${baseUrl}/account`;
 
 function Account() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +24,13 @@ function Account() {
     });
   }, []);
 
-  return isLoading ? <h1>Loading...</h1> : <h1>Welcome {userInfo.name}!</h1>;
+  return (
+  
+  <main>
+    <h1>Welcome {userInfo.name}!</h1>
+  </main>
+  
+  );
 }
 
 export default Account;

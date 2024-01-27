@@ -1,6 +1,7 @@
 import "./SignUpForm.scss";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Header from "../../components/Header/Header";
 
 const baseUrl = "http://localhost:8080";
 const signupUrl = `${baseUrl}/signup`;

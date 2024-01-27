@@ -2,14 +2,30 @@
 @import "../../styles/partials/_variables.scss";
 
 .food {
-    max-width: 300px;
+    width: 100%;
 
-    &--wrapper{
+    &--wrapper {
         border: 2px solid red;
     }
 
     &--img {
         object-fit: contain;
         max-width: 100%;
+    }
+}
+
+.meal {
+
+    &__box {
+        border: 2px dashed #aaa;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+
+        &--image{
+            max-width: 100%; 
+            max-height: 200px; 
+        }
     }
 }
