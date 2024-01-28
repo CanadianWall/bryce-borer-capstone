@@ -1,6 +1,7 @@
 import "./Header.scss";
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
+import logo from "../../assets/images/logo-title.png"
 
 
 const Header = (props) => {
@@ -35,8 +36,13 @@ const Header = (props) => {
     return (
         <header className="header">
             <nav>
-                <div className="header--logo">
-                    <a href="/">sAIcheese</a>
+                <div className="header__logo">
+                    <a href="/">
+                        <img
+                            src={logo}
+                            alt="Logo"
+                            className="header__logo--title" />
+                    </a>
                 </div>
                 <ul className="header__links">
                     <li className="header__links--item"><a href="/trends">Trends</a></li>

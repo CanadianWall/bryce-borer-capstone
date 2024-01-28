@@ -61,7 +61,7 @@ const Home = () => {
                         <div className="home__box--content">
                             <h3 className="food__facts"> Here are some food facts on your meal:</h3>
                             <h4 className="food__facts--info"> Portion size: {foodMacros.foodMacros.size}g</h4>
-                            <h4 className="food__facts--info"> Calories: {foodMacros.foodMacros.calories}g</h4>
+                            <h4 className="food__facts--info"> Calories: {foodMacros.foodMacros.calories}kcal</h4>
                             <h4 className="food__facts--info"> Carbohydrates: {foodMacros.foodMacros.carbs}g</h4>
                             <h4 className="food__facts--info"> Proteins: {foodMacros.foodMacros.protein}g</h4>
                             <h4 className="food__facts--info"> Sugars: {foodMacros.foodMacros.sugar}g</h4>
