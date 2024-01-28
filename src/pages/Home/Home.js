@@ -49,12 +49,14 @@ const Home = () => {
                 {foodMacros.foodMacros.foodName ? (
                     <div className="home__box">
                         <div className="home__box--title">
-                            <h2 className="food__name">Looks like a delicious
+                            <h2 className="food__name"> 
+                            <span className="tablet-hidden">Looks like a delicious</span>
                             <span> </span>
                                 <span className="food__name--identified">
                                     {foodMacros.foodMacros.foodName}
                                 </span>
                             </h2>
+                            
                         </div>
                         <div className="home__box--content">
                             <h3 className="food__facts"> Here are some food facts on your meal:</h3>
@@ -63,9 +65,13 @@ const Home = () => {
                             <h4 className="food__facts--info"> Carbohydrates: {foodMacros.foodMacros.carbs}g</h4>
                             <h4 className="food__facts--info"> Proteins: {foodMacros.foodMacros.protein}g</h4>
                             <h4 className="food__facts--info"> Sugars: {foodMacros.foodMacros.sugar}g</h4>
+                            <div className="food--button--wrapper">
+                            <button className="food--button" onClick={handleFoodLogging}> Log my food!</button>
+
+                                </div>
                         </div>
 
-                        <button className="food--button" onClick={handleFoodLogging}> Log my food!</button>
+                        
                     </div>
                 ) : (<div></div>)}
                 <div className="home__box">
