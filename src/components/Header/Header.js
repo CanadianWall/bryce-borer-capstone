@@ -14,22 +14,22 @@ const Header = (props) => {
     const baseUrl = "http://localhost:8080";
     const accountUrl = `${baseUrl}/account`;
 
-    const token = sessionStorage.getItem('authToken')
+    // const token = sessionStorage.getItem('authToken')
 
-    useEffect(() => {
-        // Here grab the token from sessionStorage and then make an axios request to profileUrl endpoint.
-        // Remember to include the token in Authorization header
-        const token = sessionStorage.getItem('authToken')
+    // useEffect(() => {
+    //     // Here grab the token from sessionStorage and then make an axios request to profileUrl endpoint.
+    //     // Remember to include the token in Authorization header
+    //     const token = sessionStorage.getItem('authToken')
 
-        axios.get(accountUrl, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        }).then((response) => {
-            setIsLoading(false)
-            setUserInfo(response.data)
-        });
-    }, []);
+    //     axios.get(accountUrl, {
+    //         headers: {
+    //             Authorization: `Bearer ${token}`,
+    //         },
+    //     }).then((response) => {
+    //         setIsLoading(false)
+    //         setUserInfo(response.data)
+    //     });
+    // }, []);
 
 
 

@@ -19,21 +19,21 @@ const LogIn = (props) => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const loginData = {
-      username: e.target.username.value,
-      password: e.target.password.value
-    }
+    // const loginData = {
+    //   username: e.target.username.value,
+    //   password: e.target.password.value
+    // }
 
-    axios.post(loginUrl, loginData).then((response) => {
-      console.log(response)
-      setIsLoginError(false)
-      setErrorMessage('')
-      sessionStorage.setItem('authToken', response.data.token)
-      setIsLoggedIn(true)
-    }).catch((error) => {
-      setIsLoginError(true)
-      setErrorMessage(error.response.data.error.message)
-    })
+    // axios.post(loginUrl, loginData).then((response) => {
+    //   console.log(response)
+    //   setIsLoginError(false)
+    //   setErrorMessage('')
+    //   sessionStorage.setItem('authToken', response.data.token)
+    //   setIsLoggedIn(true)
+    // }).catch((error) => {
+    //   setIsLoginError(true)
+    //   setErrorMessage(error.response.data.error.message)
+    // })
     alert("You are logged in!")
     navigate('/');
     
