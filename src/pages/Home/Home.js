@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import MealProcessing from "../../components/MealProcessing/MealProcessing";
 import Header from "../../components/Header/Header";
+import Chart from "../../components/Chart/Chart";
 
 const baseUrl = "http://localhost:8080";
 const signupUrl = `${baseUrl}/signup`;
@@ -48,7 +49,9 @@ const Home = () => {
             <div className="home--wrapper">
                 <div className="home__box">
                     <h2 className="home__box--title"> Last Week</h2>
-                    <div className="home__box--content"> *Graph*</div>
+                    <div className="home__box--content"> 
+                    <Chart />
+                    </div>
                 </div>
                 <div className="home__box">
                     <h2 className="home__box--title"> Yum Yum</h2>

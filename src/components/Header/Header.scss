@@ -39,7 +39,8 @@ nav {
         justify-content: space-evenly;
         background-color: $yellow;
         margin-top: 0;
-        
+        height: $tablet-margin;
+        align-items: center;
 
         &--item{
             display: flex;
