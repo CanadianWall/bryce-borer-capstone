@@ -32,7 +32,6 @@ const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
             const sugar = (response.data.items[0].food[0].food_info.nutrition.sugars_100g * size/100)
 
             const newData = {
-              foodMacros:{
                 foodName: response.data.items[0].food[0].food_info.display_name,
                 size: size,
                 calories: calories,
@@ -40,7 +39,7 @@ const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
                 protein: protein,
                 fat: fat,
                 sugar:sugar
-            }}
+            }
             console.log('Food identified as: ', response.data.items[0].food[0].food_info.display_name);
             console.log('Serving size: ', response.data.items[0].food[0].food_info.g_per_serving, "g");
             console.log('Calories: ', response.data.items[0].food[0].food_info.nutrition.calories_100g);

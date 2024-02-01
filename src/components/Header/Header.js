@@ -1,7 +1,7 @@
 import "./Header.scss";
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
-import logo from "../../assets/images/logo-title.png"
+import logo from "../../assets/images/logo-title-new.png"
 
 
 const Header = (props) => {
