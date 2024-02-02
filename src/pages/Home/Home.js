@@ -47,13 +47,7 @@ const Home = () => {
     return (
         <main className="home">
             <div className="home--wrapper">
-                <div className="home__box">
-                    <h2 className="home__box--title"> Last Week</h2>
-                    <div className="home__box--content"> 
-                    <Chart />
-                    </div>
-                </div>
-                <div className="home__box">
+            <div className="home__box">
                     <h2 className="home__box--title"> Yum Yum</h2>
                     <div className="home__box--content">
                         <MealProcessing
@@ -62,6 +56,13 @@ const Home = () => {
                         />
                     </div>
                 </div>
+                <div className="home__box">
+                    <h2 className="home__box--title"> Last Week</h2>
+                    <div className="home__box--content"> 
+                    <Chart />
+                    </div>
+                </div>
+                
                 {foodMacros.foodName ? (
                     <div className="home__box">
                         <div className="home__box--title">
