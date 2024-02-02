@@ -3,34 +3,70 @@ import axios from "axios";
 import Header from "../../components/Header/Header";
 
 const baseUrl = "http://localhost:8080";
-const accountUrl = `${baseUrl}/account`;
+const accountURL = `${baseUrl}/user`;
 
 function Account() {
-  const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  const handleChangeName = (event) => {
+    setUserInfo(prevState => ({
+      ...prevState.name,
+      name: event.target.value
+    }))
+  };
 
   useEffect(() => {
-    // Here grab the token from sessionStorage and then make an axios request to profileUrl endpoint.
-    // Remember to include the token in Authorization header
-    const token = sessionStorage.getItem('authToken')
-
-    axios.get(accountUrl, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((response) => {
-      setIsLoading(false)
-      setUserInfo(response.data)
-    });
+    axios.get(accountURL)
+      .then((res) => {
+        setUserInfo(res.data[0])
+        setHasLoaded(true)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
-  return (
-  
-  <main>
-    <h1>Welcome {userInfo.name}!</h1>
-  </main>
-  
-  );
+  function handleAccountSubmit() {
+    axios.patch(accountURL, userInfo)
+    .then((res) => {
+      console.log("patch confirmed!")
+      console.log(res)
+    })
+  }
+
+
+
+  if (!hasLoaded) {
+    return null;
+  } else {
+    return (
+
+      <main>
+        <h1>Welcome {userInfo.name}!</h1>
+        <form className="form" onSubmit={() => (handleAccountSubmit(accountURL))}>
+          <label className="form--title">Name</label>
+          <input
+            className="form__input"
+            placeholder={userInfo.name}
+            name="itemQuantity"
+            htmlform="itemQuantity"
+            value={userInfo.name}
+            onChange={handleChangeName}
+          />
+          {/* <span
+            className={`errorMsg ${error.qtyError ? "errorMsg--invalid-input" : ""
+              }`}
+          >
+            <img src={ErrorIcon} alt="Error Icon" />
+            This field must be a non-zero integer
+          </span> */}
+          <button className="form--save">Update</button>
+        </form>
+      </main>
+
+    );
+  }
 }
 
 export default Account;

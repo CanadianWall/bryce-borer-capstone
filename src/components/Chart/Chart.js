@@ -5,9 +5,6 @@ import { RadialBarChart, RadialBar, Legend, PolarAngleAxis, ResponsiveContainer 
 
 
 
-
-
-
 const Chart = (props) => {
 
     const baseUrl = "http://localhost:8080";
@@ -23,41 +20,41 @@ const Chart = (props) => {
 
 const data = [
   {
-    name: '18-24',
+    name: 'Sugar',
     uv: 31.47,
     pv: 2400,
     fill: '#8884d8',
   },
   {
-    name: '25-29',
+    name: 'Fat',
     uv: 26.69,
     pv: 4567,
     fill: '#83a6ed',
   },
   {
-    name: '30-34',
+    name: 'Protein',
     uv: 15.69,
     pv: 1398,
     fill: '#8dd1e1',
   },
   {
-    name: '35-39',
+    name: 'Carbohydrates',
     uv: 8.22,
     pv: 9800,
-    fill: '#82ca9d',
+    fill: '#ff6f61',
   },
   {
-    name: '40-49',
+    name: 'Calories',
     uv: 8.63,
     pv: 3908,
-    fill: '#a4de6c',
+    fill: '#82ca9d',
   },
 ];
 
 const style = {
   top: '50%',
   right: 0,
-  transform: 'translate(-200%, -150%)',
+  transform: 'translate(-100%, -150%)',
   lineHeight: '24px',
 };
 
@@ -71,8 +68,8 @@ const style = {
         cy="0%" 
         innerRadius= "50%" 
         outerRadius="100%" 
-        width={490}
-        height={490}
+        width={470}
+        height={470}
         barSize={20} 
         data={data}
         startAngle={270}

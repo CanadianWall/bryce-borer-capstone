@@ -57,7 +57,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="home__box">
-                    <h2 className="home__box--title"> Last Week</h2>
+                    <h2 className="home__box--title"> Today's Stats</h2>
                     <div className="home__box--content"> 
                     <Chart />
                     </div>
