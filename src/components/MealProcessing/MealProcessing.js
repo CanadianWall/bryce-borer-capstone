@@ -69,8 +69,8 @@ const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
 
 
   return (
-    <main>
-      <section>
+    <main className="meal">
+      <section className="meal">
         <div
           onDrop={handleDrop}
           onDragOver={handleDragOver}
@@ -84,7 +84,7 @@ const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
 
             />
           ) : (
-            <p>Drag & drop your meal here</p>
+            <p></p>
           )}
         </div>
 

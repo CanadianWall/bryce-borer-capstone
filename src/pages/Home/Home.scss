@@ -27,7 +27,8 @@
 
     &__box {
 
-        width: calc(100% - ($mobile-margin)*2);
+        //width: calc(100% - ($mobile-margin)*2);
+        width: 353px;
         // padding: $mobile-margin;
 
         @include tablet {
@@ -42,13 +43,14 @@
             box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
         }
 
-        &--content {
-            // width: 230px;
+        &__content {
+            width: 353px;
             height: 230px;
             background-color: $yellow;
             border-radius: 15px;
             margin-bottom: calc($mobile-margin/2);
             box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+            overflow: hidden;
         }
     }
 }
@@ -72,11 +74,12 @@
     }
 
     &__facts {
-
+        padding: $mobile-margin;
         display: flex;
+        margin:0;
 
         &--info {
-
+            padding: 4px 0 0 $mobile-margin;
             display: flex;
             margin: 0;
         }
@@ -102,7 +105,7 @@
     transition: 0.5s;
     overflow: hidden;
     box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
-    background-color: $yellow;
+    background-color: $orange;
 
     &--wrapper{
         display:flex;
@@ -112,17 +115,17 @@
 
     // Shine animation for hover
     &:hover {
-        background-color: $orange;
+        background-color: #82ca9d;
         /* Change the background color on hover */
         color: #fff;
         /* Change the text color on hover */
         transition: background-color 0.5s ease, color 0.5s ease;
     }
 
+
     &:nth-child(2):hover {
         background: #ff3c7f;
     }
-
     &::before {
         content: '';
         position: absolute;

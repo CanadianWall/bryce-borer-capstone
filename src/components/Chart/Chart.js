@@ -1,100 +1,116 @@
 import "./Chart.scss";
 import axios from "axios";
-import React, { PureComponent, useEffect } from 'react';
+import React, { PureComponent, useEffect, useState } from 'react';
 import { RadialBarChart, RadialBar, Legend, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 
 
 
 const Chart = (props) => {
 
-    const baseUrl = "http://localhost:8080";
-    const accountUrl = `${baseUrl}/account`;
+  const baseUrl = "http://localhost:8080";
+  const accountURL = `${baseUrl}/user`;
+  const [userInfo, setUserInfo] = useState({});
+  const [hasLoaded, setHasLoaded] = useState(false);
 
 
-    useEffect(() => {
+  // useEffect(() => {
+  //   axios.get(accountURL)
+  //     .then((res) => {
+  //       setUserInfo(res.data[0])
+  //       setHasLoaded(true)
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
 
-    }, []);
+  // const foodData (() => {
 
- 
-    
+  // })
 
-const data = [
-  {
-    name: 'Sugar',
-    uv: 31.47,
-    pv: 2400,
-    fill: '#8884d8',
-  },
-  {
-    name: 'Fat',
-    uv: 26.69,
-    pv: 4567,
-    fill: '#83a6ed',
-  },
-  {
-    name: 'Protein',
-    uv: 15.69,
-    pv: 1398,
-    fill: '#8dd1e1',
-  },
-  {
-    name: 'Carbohydrates',
-    uv: 8.22,
-    pv: 9800,
-    fill: '#ff6f61',
-  },
-  {
-    name: 'Calories',
-    uv: 8.63,
-    pv: 3908,
-    fill: '#82ca9d',
-  },
-];
+  const data = [
+    {
+      name: `Empty`,
+      uv: 1,
+      pv: 0,
+      fill: '#fbc956',
+    },
+    {
+      name: `Sugar: ${props.foodMacros.sugar}g`,
+      uv: (props.foodMacros.sugar/35),
+      pv: props.foodMacros.sugar,
+      fill: '#8884d8',
+    },
+    {
+      name: `Fat: ${props.foodMacros.fat}g`,
+      uv: (props.foodMacros.fat/50),
+      pv: props.foodMacros.fat,
+      fill: '#83a6ed',
+    },
+    {
+      name: `Protein: ${props.foodMacros.protein}g`,
+      uv: (props.foodMacros.protein/175),
+      pv: props.foodMacros.protein,
+      fill: '#8dd1e1',
+    },
+    {
+      name: `Carbs: ${props.foodMacros.carbs}g`,
+      uv: (props.foodMacros.carbs/225),
+      pv: props.foodMacros.carbs,
+      fill: '#ff6f61',
+    },
+    {
+      name: `Calories: ${props.foodMacros.calories}kcal`,
+      uv: (props.foodMacros.calories/2074),
+      pv: props.foodMacros.calories,
+      fill: '#82ca9d',
+    },
+  ];
 
-const style = {
-  top: '50%',
-  right: 0,
-  transform: 'translate(-100%, -150%)',
-  lineHeight: '24px',
-};
+  const style = {
+    top: '50%',
+    right: 0,
+    transform: 'translate(-70%, -120%)',
+    lineHeight: '24px',
+  };
 
 
 
 
-    return (
-      
-        <RadialBarChart 
-        cx="0%" 
-        cy="0%" 
-        innerRadius= "50%" 
-        outerRadius="100%" 
-        width={470}
-        height={470}
-        barSize={20} 
-        data={data}
-        startAngle={270}
-        endAngle={360}
+  return (
 
-        >
-          <RadialBar
-            minAngle={15}
-            label={{ position: 'insideStart', fill: '#000' }}
-            background
-            ClockWise
-            dataKey="uv"
-          />
-          <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
-        </RadialBarChart>
-      
-    );
-    }
-    
+    <RadialBarChart
+      cx="0%"
+      cy="0%"
+      innerRadius="20%"
+      outerRadius="100%"
+      width={470}
+      height={470}
+      barSize={20}
+      data={data}
+      startAngle={270}
+      endAngle={360}
 
-    // return (
-    //     <main className="chart">
+    >
+      <RadialBar
+        minAngle={15}
+        //label={{ position: 'insideStart', fill: '#000' }}
+        background
+        ClockWise
+        dataKey="uv"
+      />
+      <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
+    </RadialBarChart>
 
-    //     </main>
-    // )
+  );
+}
+
+
+// return (
+//     <main className="chart">
+
+//     </main>
+// )
 // }
 
 

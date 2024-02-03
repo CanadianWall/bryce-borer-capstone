@@ -16,6 +16,13 @@ function Account() {
     }))
   };
 
+  const handleChangeEmail = (event) => {
+    setUserInfo(prevState => ({
+      ...prevState.email,
+      email: event.target.value
+    }))
+  };
+
   useEffect(() => {
     axios.get(accountURL)
       .then((res) => {
@@ -32,6 +39,9 @@ function Account() {
     .then((res) => {
       console.log("patch confirmed!")
       console.log(res)
+    })
+    .catch((e) => {
+      console.log(e)
     })
   }
 
@@ -54,6 +64,16 @@ function Account() {
             value={userInfo.name}
             onChange={handleChangeName}
           />
+          <br/>
+          <label className="form--title">Email</label>
+          <input
+            className="form__input"
+            placeholder={userInfo.email}
+            name="itemQuantity"
+            htmlform="itemQuantity"
+            value={userInfo.email}
+            onChange={handleChangeEmail}
+          />
           {/* <span
             className={`errorMsg ${error.qtyError ? "errorMsg--invalid-input" : ""
               }`}
@@ -61,6 +81,7 @@ function Account() {
             <img src={ErrorIcon} alt="Error Icon" />
             This field must be a non-zero integer
           </span> */}
+          <br/>
           <button className="form--save">Update</button>
         </form>
       </main>

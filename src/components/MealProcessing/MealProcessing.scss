@@ -1,5 +1,6 @@
 @import "../../styles/partials/_mixins.scss";
 @import "../../styles/partials/_variables.scss";
+// @import "../../assets/images/food-camera.jpg";
 
 .food {
     width: 100%;
@@ -14,22 +15,30 @@
     }
 }
 
+
+
 .meal {
-    height: 100%; 
+    height: 100%;
+
     &__box {
         display: flex;
         border-radius: 8px;
         text-align: center;
         justify-content: center;
         cursor: pointer;
-        height: 230px; 
+        height: 230px;
+        width: 353px;
+        background: url("../../assets/images/food-camera.jpg");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
 
-        @include tablet{
+        @include tablet {}
 
-        }
-
-        &--image{
-            height: 100%; 
+        &--image {
+            height: 100%;
             width: 100%;
             object-fit: cover;
             border-radius: 15px;
