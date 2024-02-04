@@ -70,15 +70,15 @@ const Home = () => {
                                     {foodMacros.foodName}
                                 </span>
                             </h2>
-
+                            
                         </div>
                         <div className="home__box__content">
                             <h3 className="food__facts"> Here are some food facts on your meal:</h3>
                             <h4 className="food__facts--info"> Portion size: {foodMacros.size}g</h4>
-                            <h4 className="food__facts--info"> Calories: {foodMacros.calories}kcal</h4>
-                            <h4 className="food__facts--info"> Carbohydrates: {foodMacros.carbs}g</h4>
-                            <h4 className="food__facts--info"> Proteins: {foodMacros.protein}g</h4>
-                            <h4 className="food__facts--info"> Sugars: {foodMacros.sugar}g</h4>
+                            <h4 className="food__facts--info"> Calories: {(Math.round(foodMacros.calories* 100) / 100).toFixed(2)}kcal</h4>
+                            <h4 className="food__facts--info"> Carbohydrates: {(Math.round(foodMacros.carbs* 100) / 100).toFixed(2)}g</h4>
+                            <h4 className="food__facts--info"> Proteins: {(Math.round(foodMacros.protein* 100) / 100).toFixed(2)}g</h4>
+                            <h4 className="food__facts--info"> Sugars: {(Math.round(foodMacros.sugar* 100) / 100).toFixed(2)}g</h4>
                             <div className="food--button--wrapper">
                                 <button className="food--button" onClick={() => (
                                     handleFoodLogging(

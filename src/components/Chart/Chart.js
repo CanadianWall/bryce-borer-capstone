@@ -36,31 +36,32 @@ const Chart = (props) => {
       fill: '#fbc956',
     },
     {
-      name: `Sugar: ${props.foodMacros.sugar}g`,
+      name: `Sugar: ${(Math.round(props.foodMacros.sugar* 100) / 100).toFixed(2)}g`,
       uv: (props.foodMacros.sugar/35),
       pv: props.foodMacros.sugar,
       fill: '#8884d8',
     },
     {
-      name: `Fat: ${props.foodMacros.fat}g`,
+      name: `Fat: ${(Math.round(props.foodMacros.fat* 100) / 100).toFixed(2)}g`,
       uv: (props.foodMacros.fat/50),
       pv: props.foodMacros.fat,
       fill: '#83a6ed',
     },
     {
-      name: `Protein: ${props.foodMacros.protein}g`,
+      name: `Protein: ${(Math.round(props.foodMacros.protein* 100) / 100).toFixed(2)}g`,
       uv: (props.foodMacros.protein/175),
       pv: props.foodMacros.protein,
       fill: '#8dd1e1',
     },
     {
-      name: `Carbs: ${props.foodMacros.carbs}g`,
+      name: `Carbs: ${(Math.round(props.foodMacros.carbs* 100) / 100).toFixed(2)}g`,
       uv: (props.foodMacros.carbs/225),
       pv: props.foodMacros.carbs,
       fill: '#ff6f61',
     },
     {
-      name: `Calories: ${props.foodMacros.calories}kcal`,
+      
+      name: `Calories: ${(Math.round(props.foodMacros.calories* 100) / 100).toFixed(2)}kcal`,
       uv: (props.foodMacros.calories/2074),
       pv: props.foodMacros.calories,
       fill: '#82ca9d',
