@@ -14,13 +14,12 @@ const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
     e.preventDefault();
 
     const file = e.dataTransfer.files[0];
-    console.log(file.name)
+
     if (file && file.type.startsWith('image/')) {
       const reader = new FileReader();
 
       reader.onload = () => {
         setImage(reader.result);
-        // formData.append('image', file);
         const fileName = file.name;
         axios.post('http://localhost:8080/foodImage', { fileName })
           .then((response) => {
@@ -40,14 +39,6 @@ const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
                 fat: fat,
                 sugar:sugar
             }
-            console.log('Food identified as: ', response.data.items[0].food[0].food_info.display_name);
-            console.log('Serving size: ', response.data.items[0].food[0].food_info.g_per_serving, "g");
-            console.log('Calories: ', response.data.items[0].food[0].food_info.nutrition.calories_100g);
-            console.log('Carbs: ', response.data.items[0].food[0].food_info.nutrition.carbs_100g);
-            console.log('Protein: ', response.data.items[0].food[0].food_info.nutrition.proteins_100g);
-            console.log('Fat: ', response.data.items[0].food[0].food_info.nutrition.fat_100g);
-            console.log('Sugar: ', response.data.items[0].food[0].food_info.nutrition.sugars_100g);
-           // props.updateNutrition(response.data)
            updateFoodMacros(newData);
           })
           .catch((err) => {
