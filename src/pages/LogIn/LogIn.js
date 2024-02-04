@@ -1,16 +1,11 @@
 import "./LogIn.scss";
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import Header from "../../components/Header/Header";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const baseUrl = "http://localhost:8080";
-const loginUrl = `${baseUrl}/login`;
 
 const LogIn = (props) => {
   const navigate = useNavigate();
-  const [isSignedUp, setIsSignedUp] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(props.isLoggedIn);
   const [isLoginError, setIsLoginError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   

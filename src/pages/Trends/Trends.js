@@ -1,7 +1,7 @@
 import "./Trends.scss";
 import axios from "axios";
-import React, { PureComponent, useEffect, useState } from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import React, { useEffect, useState } from 'react';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 const Trends = () => {
 
