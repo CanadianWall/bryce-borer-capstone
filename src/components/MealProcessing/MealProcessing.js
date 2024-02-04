@@ -1,14 +1,12 @@
 import "./MealProcessing.scss";
 import axios from "axios";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 const FormData = require('form-data');
 
 const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
-  const formData = new FormData();
   
   const [image, setImage] = useState(null);
-  const fileInputRef = useRef(null);
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -20,7 +18,6 @@ const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
 
       reader.onload = () => {
         setImage(reader.result);
-        // formData.append('image', file);
         const fileName = file.name;
         axios.post('http://localhost:8080/foodImage', { fileName })
           .then((response) => {
@@ -47,7 +44,6 @@ const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
             console.log('Protein: ', response.data.items[0].food[0].food_info.nutrition.proteins_100g);
             console.log('Fat: ', response.data.items[0].food[0].food_info.nutrition.fat_100g);
             console.log('Sugar: ', response.data.items[0].food[0].food_info.nutrition.sugars_100g);
-           // props.updateNutrition(response.data)
            updateFoodMacros(newData);
           })
           .catch((err) => {
@@ -64,10 +60,7 @@ const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
   const handleDragOver = (e) => {
     e.preventDefault();
   };
-
   
-
-
   return (
     <main className="meal">
       <section className="meal">

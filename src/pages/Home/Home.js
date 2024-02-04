@@ -1,15 +1,11 @@
 import "./Home.scss";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import MealProcessing from "../../components/MealProcessing/MealProcessing";
-import Header from "../../components/Header/Header";
 import Chart from "../../components/Chart/Chart";
 
 const baseUrl = "http://localhost:8080";
-const signupUrl = `${baseUrl}/signup`;
-const loginUrl = `${baseUrl}/login`;
 const newMealURL = `${baseUrl}/post`;
-const space = ' ';
 const postHeader = {
     "Content-Type": "application/json",
 };

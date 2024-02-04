@@ -1,18 +1,10 @@
 import "./Header.scss";
-import axios from "axios";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import logo from "../../assets/images/logo-title-new.png"
 
 
 const Header = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(props.isLoggedIn);
-    const [userName, setUserName] = useState(props.userName);
-
-    const [userInfo, setUserInfo] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-
-    const baseUrl = "http://localhost:8080";
-    const accountUrl = `${baseUrl}/account`;
 
     return (
         <header className="header">

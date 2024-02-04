@@ -33,15 +33,6 @@ const SignUpForm = () => {
 
       const handleSignup = (e) => {
         e.preventDefault();
-        // const newUser = {
-        //   username: e.target.username.value,
-        //   name: e.target.name.value,
-        //   password: e.target.password.value
-        // }
-        // axios.post(signupUrl, newUser).then((response)=> {
-        //    setIsSignedUp(true);
-        //   })
-        //Here send a POST request to signupUrl with username, name and password data
       };
 
 
