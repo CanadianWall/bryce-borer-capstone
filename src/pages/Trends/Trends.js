@@ -33,7 +33,6 @@ const Trends = () => {
     axios.get(foodURL)
       .then((res) => {
         setFoodInfo(res.data)
-        console.log(res.data)
         setHasLoaded2(true)
       })
       .catch((error) => {
