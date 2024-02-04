@@ -9,24 +9,9 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: $font-regular;
-    color: $instock-black;
+    color: $black;
 
 }
-
-// html{
-//     overflow: hidden;
-//     @include tablet{
-//         overflow:auto;
-//     }
-// }
-// body{
-//     height: 100%;
-//     width: 100%;
-//     overflow: auto;
-//     @include tablet{
-//         overflow:none;
-//     }
-// }
 
 //Page Header
 h1 {
@@ -58,7 +43,8 @@ h2 {
 h3,
 label,
 link,
-button {
+button,
+a {
     font-size: 13px;
     line-height: 20px;
     font-family: $font-bold;

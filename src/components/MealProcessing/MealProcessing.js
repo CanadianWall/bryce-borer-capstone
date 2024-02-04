@@ -1,64 +1,91 @@
 import "./MealProcessing.scss";
 import axios from "axios";
-import { API_BASE_URL } from "../../utils/utils";
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
-import sandwich from '../../assets/images/ham-sandwich.jpeg'
-import pizza from '../../assets/images/pizza.jpeg'
+const FormData = require('form-data');
 
-// const fetch = require('node-fetch');
-//const fs = require('fs');
+const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
+  
+  const [image, setImage] = useState(null);
 
-const url = "https://vision.foodvisor.io/api/1.0/en/analysis/";
-const API_KEY = "WGUmFqSK.gcxjKP1cm9F4MaLTZUlntSeuQWpHWreI"
-const headers = {
-    "Content-Type": "multipart/form-data; boundary=<calculated when request is sent></calculated>",
-    "Authorization": `Api-Key ${API_KEY}`
-};
-const pizzaDir = "/C:/Users/bryce/Brainstation/bryce-borer-capstone/src/assets/images/pizza.jpeg"
+  const handleDrop = (e) => {
+    e.preventDefault();
 
-const MealProcessing = () => {
-    const [foodData, setFoodData] = useState("Loading...")
-    const formData = new FormData();
-    formData.append("image", pizzaDir)
+    const file = e.dataTransfer.files[0];
+    console.log(file.name)
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
 
-    const foodProcessing = () => {
+      reader.onload = () => {
+        setImage(reader.result);
+        const fileName = file.name;
+        axios.post('http://localhost:8080/foodImage', { fileName })
+          .then((response) => {
+            const size = response.data.items[0].food[0].food_info.g_per_serving
+            const calories = (response.data.items[0].food[0].food_info.nutrition.calories_100g * size/100)
+            const carbs = (response.data.items[0].food[0].food_info.nutrition.carbs_100g * size/100)
+            const protein = (response.data.items[0].food[0].food_info.nutrition.proteins_100g * size/100)
+            const fat = (response.data.items[0].food[0].food_info.nutrition.fat_100g * size/100)
+            const sugar = (response.data.items[0].food[0].food_info.nutrition.sugars_100g * size/100)
 
-        axios
-            .post(url, formData, { headers: headers })
-            .then((res) => {
-                console.log(res)
-                setFoodData(res)
-            })
-            .catch((e) => {
-                console.log(e)
-            })
+            const newData = {
+                foodName: response.data.items[0].food[0].food_info.display_name,
+                size: size,
+                calories: calories,
+                carbs: carbs,
+                protein: protein,
+                fat: fat,
+                sugar:sugar
+            }
+            console.log('Food identified as: ', response.data.items[0].food[0].food_info.display_name);
+            console.log('Serving size: ', response.data.items[0].food[0].food_info.g_per_serving, "g");
+            console.log('Calories: ', response.data.items[0].food[0].food_info.nutrition.calories_100g);
+            console.log('Carbs: ', response.data.items[0].food[0].food_info.nutrition.carbs_100g);
+            console.log('Protein: ', response.data.items[0].food[0].food_info.nutrition.proteins_100g);
+            console.log('Fat: ', response.data.items[0].food[0].food_info.nutrition.fat_100g);
+            console.log('Sugar: ', response.data.items[0].food[0].food_info.nutrition.sugars_100g);
+           updateFoodMacros(newData);
+          })
+          .catch((err) => {
+            console.error('File upload error:', err);
+          })
+      };
 
+      reader.readAsDataURL(file);
 
     }
+    
+  };
 
-    return (
-        <main>
-            <section className="food">
-                <img
-                    src={pizza}
-                    alt="pizza"
-                    className="food--img" />
-                <form method="post" encType="multipart/form-data" action="http://localhost:8080/foodImage">
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+  
+  return (
+    <main className="meal">
+      <section className="meal">
+        <div
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
+          className="meal__box"
+        >
+          {image ? (
+            <img
+              src={image}
+              alt="Uploaded"
+              className="meal__box--image"
 
-                    <input type="file" id="foodImage" name="foodImage" accept="image/jpeg, image/png, image/jpg"></input>
-                    <button>SUBMIT</button>
-                </form>
-            </section>
-            <section>
-                <h1 className="data">
-                    Food Data:
-                </h1>
-                <h3>{foodData}</h3>
-                <button onClick={foodProcessing}>Process Image</button>
-            </section>
-        </main>
-    )
+            />
+          ) : (
+            <p></p>
+          )}
+        </div>
+
+      </section>
+
+
+    </main>
+  )
 }
 
 export default MealProcessing;

@@ -1,11 +1,47 @@
 @import "../../styles/partials/_mixins.scss";
 @import "../../styles/partials/_variables.scss";
+// @import "../../assets/images/food-camera.jpg";
 
 .food {
-    max-width: 500px;
+    width: 100%;
+
+    &--wrapper {
+        border: 2px solid red;
+    }
 
     &--img {
-        object-fit: cover;
-        max-width: 500px;
+        object-fit: contain;
+        width: 100%;
+    }
+}
+
+
+
+.meal {
+    height: 100%;
+
+    &__box {
+        display: flex;
+        border-radius: 8px;
+        text-align: center;
+        justify-content: center;
+        cursor: pointer;
+        height: 230px;
+        width: 353px;
+        background: url("../../assets/images/food-camera.jpg");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+        @include tablet {}
+
+        &--image {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
     }
 }
