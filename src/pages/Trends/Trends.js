@@ -10,6 +10,7 @@ const Trends = () => {
   const foodURL = `${baseUrl}/post`;
   const [userInfo, setUserInfo] = useState({});
   const [foodInfo, setFoodInfo] = useState({});
+  const [dataSelected, setDataSelected] = useState("calories");
   const [hasLoaded1, setHasLoaded1] = useState(false);
   const [hasLoaded2, setHasLoaded2] = useState(false);
 
@@ -34,10 +35,17 @@ const Trends = () => {
       .then((res) => {
         setFoodInfo(res.data)
         setHasLoaded2(true)
+        console.log(res.data)
       })
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  function changeTrendData(change){
+
+    setDataSelected(change)
+    return change;
   }
 
   const getFoodDataByDate = () => {
@@ -117,11 +125,20 @@ const Trends = () => {
             </defs>
             <Area
               type="monotone"
-              dataKey="calories"
+              dataKey={dataSelected}
               stroke="#000"
               fill="url(#splitColor)"
             />
           </AreaChart>
+          <button onClick={()=>setDataSelected("protein")}>
+            Protein
+          </button>
+          <button onClick={()=>setDataSelected("calories")}>
+            Calories
+          </button>
+          <button onClick={()=>setDataSelected("fat")}>
+            Fat
+          </button>
         </div>
       );
     }
@@ -131,3 +148,13 @@ const Trends = () => {
   }
 
   export default Trends;
+
+  // <button onClick={()=>changeTrendData("protein")}>
+  //           Protein
+  //         </button>
+  //         <button onClick={()=>changeTrendData("calories")}>
+  //           Calories
+  //         </button>
+  //         <button onClick={()=>changeTrendData("fat")}>
+  //           Fat
+  //         </button>
