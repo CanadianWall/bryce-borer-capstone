@@ -74,13 +74,6 @@ function Account() {
             value={userInfo.email}
             onChange={handleChangeEmail}
           />
-          {/* <span
-            className={`errorMsg ${error.qtyError ? "errorMsg--invalid-input" : ""
-              }`}
-          >
-            <img src={ErrorIcon} alt="Error Icon" />
-            This field must be a non-zero integer
-          </span> */}
           <br/>
           <button className="form--save">Update</button>
         </form>

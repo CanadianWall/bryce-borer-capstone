@@ -1,5 +1,5 @@
-import { BrowserRouter, Route, Routes, useHistory  } from "react-router-dom";
-import React, { useState, useEffect, useRef } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
 import './App.scss';
 import "./styles/partials/_global.scss";
 import Home from "./pages/Home/Home"

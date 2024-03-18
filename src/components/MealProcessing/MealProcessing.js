@@ -1,14 +1,12 @@
 import "./MealProcessing.scss";
 import axios from "axios";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 const FormData = require('form-data');
 
 const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
-  const formData = new FormData();
   
   const [image, setImage] = useState(null);
-  const fileInputRef = useRef(null);
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -55,10 +53,7 @@ const MealProcessing = ({ foodMacros, updateFoodMacros }) => {
   const handleDragOver = (e) => {
     e.preventDefault();
   };
-
   
-
-
   return (
     <main className="meal">
       <section className="meal">

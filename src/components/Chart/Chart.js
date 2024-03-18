@@ -1,32 +1,12 @@
 import "./Chart.scss";
-import axios from "axios";
-import React, { PureComponent, useEffect, useState } from 'react';
-import { RadialBarChart, RadialBar, Legend, PolarAngleAxis, ResponsiveContainer } from 'recharts';
+import React from 'react';
+import { RadialBarChart, RadialBar, Legend } from 'recharts';
 
 
 
 const Chart = (props) => {
 
   const baseUrl = "http://localhost:8080";
-  const accountURL = `${baseUrl}/user`;
-  const [userInfo, setUserInfo] = useState({});
-  const [hasLoaded, setHasLoaded] = useState(false);
-
-
-  // useEffect(() => {
-  //   axios.get(accountURL)
-  //     .then((res) => {
-  //       setUserInfo(res.data[0])
-  //       setHasLoaded(true)
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
-
-  // const foodData (() => {
-
-  // })
 
   const data = [
     {
@@ -95,7 +75,6 @@ const Chart = (props) => {
     >
       <RadialBar
         minAngle={15}
-        //label={{ position: 'insideStart', fill: '#000' }}
         background
         ClockWise
         dataKey="uv"
@@ -105,14 +84,5 @@ const Chart = (props) => {
 
   );
 }
-
-
-// return (
-//     <main className="chart">
-
-//     </main>
-// )
-// }
-
 
 export default Chart;
